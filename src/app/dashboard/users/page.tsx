@@ -52,7 +52,7 @@ const UserPage = () => {
         window.location.href = "/";
       }
     }
-  }, []);
+  });
 
   const handleDelete = async (id: number) => {
     try {

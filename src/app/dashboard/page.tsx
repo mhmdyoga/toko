@@ -2,25 +2,24 @@
 
 import SideBar from '@/components/fragments/SideBar'
 import { useToast } from '@/hooks/use-toast';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Dashboard = () => {
   const { toast } = useToast();
 
   // check if user is admin
-   const handleRole = () => {
-    const validateRole = localStorage.getItem("role");
-    if(validateRole !== "admin"){
-      toast({
-        title: "admin only!",
-        variant: "destructive"
-      });
-      window.location.href = "/"
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const role = localStorage.getItem("role");
+      if (role !== "admin") {
+        toast({
+          title: "Admin only!",
+          variant: "destructive",
+        });
+        window.location.href = "/";
+      }
     }
-   }
-
-   handleRole();
-
+  });
 
   return (
     <div className="flex flex-row gap-20 ">
