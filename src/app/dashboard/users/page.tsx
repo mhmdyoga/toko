@@ -42,20 +42,16 @@ const UserPage = () => {
   });
 
   useEffect(() => {
-    const handleRole = () => {
-      const validateRole = localStorage.getItem("role");
-      if (validateRole !== "admin") {
+    if (typeof window !== "undefined") {
+      const role = localStorage.getItem("role");
+      if (role !== "admin") {
         toast({
           title: "Admin only!",
           variant: "destructive",
         });
         window.location.href = "/";
-      }else {
-        window.location.href = "/dashboard";
       }
-    };
-
-    handleRole();
+    }
   }, []);
 
   const handleDelete = async (id: number) => {
