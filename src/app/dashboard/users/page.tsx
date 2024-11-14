@@ -50,6 +50,8 @@ const UserPage = () => {
           variant: "destructive",
         });
         window.location.href = "/";
+      }else {
+        window.location.href = "/dashboard";
       }
     };
 
